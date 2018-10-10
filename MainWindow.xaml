@@ -1,0 +1,50 @@
+﻿<Window x:Class="Gabinet_CRUD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gabinet_CRUD"
+        mc:Ignorable="d"
+        xmlns:dgx="urn:tom-englert.de/DataGridExtensions"
+        Title="MainWindow" Height="900" Width="800">
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom" Height="40" Click="insertBtn_Click" Background="White">
+            <StackPanel>
+                <Image Source="img/add.png" Width="30" Height="30"/>
+            </StackPanel>
+        </Button>
+        <DataGrid Name="pacjenciGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" AlternatingRowBackground="LightCyan" dgx:DataGridFilter.IsAutoFilterEnabled="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Imie" Binding="{Binding Imie}"/>
+                <DataGridTextColumn Header="Nazwisko" Binding="{Binding Nazwisko}"/>
+                <DataGridTextColumn Header="Pasel" Binding="{Binding Pesel}"/>
+                <DataGridTextColumn Header="Adres" Binding="{Binding Adres}"/>
+                <DataGridTextColumn Header="Telefon" Binding="{Binding Telefon}"/>
+                <DataGridTextColumn Header="Opis" Binding="{Binding Opis}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Action"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="updateBtn" Click="updateBtn_Click">
+                                    <StackPanel>
+                                        <Image Source="img/edit.png" Width="30" Height="30"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="deleteBtn" Click="deleteBtn_Click">
+                                    <StackPanel>
+                                        <Image Source="img/del.png" Width="30" Height="30"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>
